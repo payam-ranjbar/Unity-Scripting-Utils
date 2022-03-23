@@ -3,6 +3,7 @@
 
 a collection of scripts to enhance and speed up unity development.
 
+import scripts swiftly by the downloadable UnityPackage on releases
 #### Extensions
 
 Collection Extensions
