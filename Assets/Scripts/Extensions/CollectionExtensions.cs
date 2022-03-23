@@ -33,16 +33,6 @@ public static class CollectionExtensions
         return false;
     }
     
-    public static T GetRandom<T>(this T[] list)
-    {
-        return list[UnityEngine.Random.Range(0, list.Length)];
-    }
-    
-    public static T GetRandom<T>(this List<T> list)
-    {
-        return list[UnityEngine.Random.Range(0, list.Count)];
-    }   
-    
     public static bool RemoveIfContained<T>(this List<T> list, T item)
     {
         if (!list.Contains(item)) return true;

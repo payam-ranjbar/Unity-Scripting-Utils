@@ -2,8 +2,6 @@
 
 public static class VectorExtensions
 {
-    public static float GetRandomBetween(this Vector2 vector) => Random.Range(vector.x, vector.y);
-
     public static Vector3 GetWithXZ(this Vector3 vector3, float x, float z)
     {
         return new Vector3(x, vector3.y, z);
