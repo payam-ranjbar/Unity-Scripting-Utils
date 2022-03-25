@@ -16,6 +16,20 @@ public static class CollectionExtensions
 
         return dictionary;
     }
+    public static Dictionary<T, TU> BuildFromList<T, TU>(this Dictionary<T, TU> dictionary, List<TU> list, Func<TU, T> getKey)
+    {
+        dictionary = new Dictionary<T, TU>();
+
+        for (var i = 0; i < list.Count; i++)
+        {
+            var element = list[i];
+            var key = getKey(element);
+
+            dictionary.Add(key, element);
+        }
+
+        return dictionary;
+    }
 
     public static  bool AddOrOverride<T, TU>(this Dictionary<T, TU> dictionary, TU element, Func<TU, T> getKey)
     {
