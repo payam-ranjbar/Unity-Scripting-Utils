@@ -41,4 +41,44 @@ public static class VectorExtensions
     {
         return new Vector3(vector3.x, v.y, vector3.z);
     }
+    
+    public static Vector3 GetWithY(this Vector3 vector3, Transform v)
+    {
+        return new Vector3(vector3.x, v.position.y, vector3.z);
+    }
+    
+    public static float GetFlatDistance(this Vector3 vector3, Vector3 v)
+    {
+        var distance = Vector3.Distance(vector3.GetWithY(0f), v.GetWithY(0f));
+        return distance;
+    }
+    
+    public static Vector3 GetDirectionTowards(this Vector3 vector3, Vector3 v, float multiplier = 1f)
+    {
+        var dir = v - vector3;
+        var normalized = dir.normalized;
+        return normalized * multiplier;
+    }    
+    public static Vector3 GetFlatDirectionTowards(this Vector3 vector3, Vector3 v, float multiplier = 1f)
+    {
+        var dir = v - vector3.GetWithY(v.y);
+        var normalized = dir.normalized;
+        return normalized * multiplier;
+    }
+
+    public static Vector3 GetRandomPointOnRadius(this Vector3 center, float radius)
+    {
+        var randomPoint2D = Random.insideUnitCircle.normalized * radius;
+        var randomPoint3D = new Vector3(randomPoint2D.x, 0f, randomPoint2D.y) + center;
+
+        return randomPoint3D;
+    }
+
+    public static Vector3 GetPointAlongPoint(this Vector3 a, Vector3 b, float c)
+    {
+        var direction = (b - a).normalized;
+        var pointC = b + direction * c;
+
+        return pointC;
+    }
 }
